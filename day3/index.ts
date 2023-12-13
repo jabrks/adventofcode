@@ -11,9 +11,9 @@ const partOne = (lines: string[]) => {
       const left = line.substring(indexOfNum - 1, indexOfNum);
       const right = line.substring(lastIndexOfNum, lastIndexOfNum + 1);
       const above =
-        lines[index - 1]?.substring(indexOfNum - 1, lastIndexOfNum + 1) || '';
+        lines[index - 1]?.substring(indexOfNum - 1, lastIndexOfNum + 1) || "";
       const below =
-        lines[index + 1]?.substring(indexOfNum - 1, lastIndexOfNum + 1) || '';
+        lines[index + 1]?.substring(indexOfNum - 1, lastIndexOfNum + 1) || "";
 
       if (/[^.\d]/.test(left + right + above + below)) {
         count += parseInt(number);
@@ -27,9 +27,9 @@ const partOne = (lines: string[]) => {
 const getLineWithNumbers = (
   line: string,
   start: number,
-  end: number
+  end: number,
 ): string => {
-  const completeLine = line?.substring(start, end) || '';
+  const completeLine = line?.substring(start, end) || "";
 
   if (/^\d/.test(completeLine) && start >= 0) {
     return getLineWithNumbers(line, start - 1, end);
@@ -56,12 +56,12 @@ const partTwo = (lines: string[]) => {
       const above = getLineWithNumbers(
         lines[index - 1],
         indexOfGear - 1,
-        indexOfGear + 2
+        indexOfGear + 2,
       );
       const below = getLineWithNumbers(
         lines[index + 1],
         indexOfGear - 1,
-        indexOfGear + 2
+        indexOfGear + 2,
       );
 
       const adjacent = left + right + above + below;
@@ -77,6 +77,6 @@ const partTwo = (lines: string[]) => {
 };
 
 const contents = await Bun.file(`${import.meta.dir}/input.txt`).text();
-const lines = contents.split('\n');
-console.log('Part one:', partOne(lines));
-console.log('Part two:', partTwo(lines));
+const lines = contents.split("\n");
+console.log("Part one:", partOne(lines));
+console.log("Part two:", partTwo(lines));

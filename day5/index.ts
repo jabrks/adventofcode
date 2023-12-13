@@ -1,9 +1,9 @@
 const getLowestNumberForSeeds = (rest: string[], seeds: string[]) => {
   const maps = rest.map((line) => {
     return line
-      .split('\n')
+      .split("\n")
       .slice(1)
-      .map((line) => line.split(' ').map((num) => parseInt(num)));
+      .map((line) => line.split(" ").map((num) => parseInt(num)));
   });
 
   return seeds
@@ -23,20 +23,20 @@ const getLowestNumberForSeeds = (rest: string[], seeds: string[]) => {
 
 const partOne = (lines: string[]) => {
   const [first, ...rest] = lines;
-  const seeds = first.replace('seeds: ', '').split(' ');
+  const seeds = first.replace("seeds: ", "").split(" ");
   return getLowestNumberForSeeds(rest, seeds);
 };
 
 const partTwo = (lines: string[]) => {
   const [first, ...rest] = lines;
   const seeds = first
-    .replace('seeds: ', '')
-    .split(' ')
+    .replace("seeds: ", "")
+    .split(" ")
     .flatMap((seed, index, array) => {
       if (index % 2 === 0) {
         const range = array[index + 1];
         return Array.from(new Array(parseInt(range))).map(
-          (_, i) => `${parseInt(seed) + i}`
+          (_, i) => `${parseInt(seed) + i}`,
         );
       }
       return [];
@@ -46,7 +46,7 @@ const partTwo = (lines: string[]) => {
 };
 
 const contents = await Bun.file(`${import.meta.dir}/input.txt`).text();
-const lines = contents.split('\n\n');
+const lines = contents.split("\n\n");
 
 const input = `seeds: 79 14 55 13
 
@@ -80,7 +80,7 @@ temperature-to-humidity map:
 
 humidity-to-location map:
 60 56 37
-56 93 4`.split('\n\n');
+56 93 4`.split("\n\n");
 
-console.log('Part one:', partOne(lines));
-console.log('Part two:', partTwo(lines));
+console.log("Part one:", partOne(lines));
+console.log("Part two:", partTwo(lines));

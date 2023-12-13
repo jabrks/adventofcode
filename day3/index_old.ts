@@ -12,9 +12,9 @@ const partTwo = (lines: string[]) => {
       const left = line.substring(indexOfGear - 1, indexOfGear);
       const right = line.substring(indexOfGear + 1, indexOfGear + 2);
       const above =
-        lines[index - 1]?.substring(indexOfGear - 1, indexOfGear + 2) || '';
+        lines[index - 1]?.substring(indexOfGear - 1, indexOfGear + 2) || "";
       const below =
-        lines[index + 1]?.substring(indexOfGear - 1, indexOfGear + 2) || '';
+        lines[index + 1]?.substring(indexOfGear - 1, indexOfGear + 2) || "";
 
       if (numberRegex.test(left)) {
         const matches = line.substring(0, indexOfGear).matchAll(/(\d+)/g);
@@ -43,7 +43,7 @@ const partTwo = (lines: string[]) => {
         ) {
           const string = lines[index - 1]?.substring(
             indexOfGear - localInd,
-            indexOfGear + 1 + localInd
+            indexOfGear + 1 + localInd,
           );
 
           const endOrStartRegex = /(?<=[^\d+])(\d+)(?=[^\d+])/g;
@@ -79,7 +79,7 @@ const partTwo = (lines: string[]) => {
           localInd += 1;
           string = lines[index + 1]?.substring(
             indexOfGear - localInd,
-            indexOfGear + 1 + localInd
+            indexOfGear + 1 + localInd,
           );
         }
 
@@ -100,7 +100,7 @@ const partTwo = (lines: string[]) => {
 };
 
 const contents = await Bun.file(`${import.meta.dir}/input.txt`).text();
-const lines = contents.split('\n');
+const lines = contents.split("\n");
 
 const input = `467..114..
 ...*......
@@ -111,7 +111,7 @@ const input = `467..114..
 ..592.....
 ......755.
 ...$.*....
-.664.598..`.split('\n');
+.664.598..`.split("\n");
 
-console.log('Part two:', partTwo(input));
-console.log('Part two:', partTwo(lines));
+console.log("Part two:", partTwo(input));
+console.log("Part two:", partTwo(lines));
